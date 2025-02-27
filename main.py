@@ -1,14 +1,21 @@
-first_book = "books/frankenstein.txt"
+from stats import word_count
+import sys
+
+
+
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+
+
+first_book = sys.argv[1]
 
 def main(book):
     with open(book) as f:
         file_contents = f.read()
-        print(file_contents)
+        #print(file_contents)
         return file_contents
 
-def word_count(contents):
-    words = contents.split()
-    return len(words)
 
 def character_count(contents):
     lowered_contents = contents.lower()
@@ -38,7 +45,7 @@ def print_letters(filtered_dicts):
     for x in filtered_dicts:
         name = x.get("name")
         num = x.get("num")
-        print (f"The '{name}' character was found {num} times")
+        print (f"{name}: {num}")
 
 first_results = main(first_book)
 
